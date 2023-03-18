@@ -14,12 +14,12 @@ function App() {
     setPostList(newPosts)
   }
   return (
-    <>
+    <div className=' bg-orange-50 min-h-screen'>
     <Header/>
     <div className=" flex flex-col items-center gap-4">
       <PostForm onSubmit={addNewPost}/>
       <PostFeed postList={postList}/>
-    </div></>
+    </div></div>
   );
 }
 
