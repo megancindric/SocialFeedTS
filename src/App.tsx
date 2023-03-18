@@ -16,9 +16,8 @@ function App() {
   return (
     <>
     <Header/>
-    <div className=" flex flex-col">
-      <h1 className=' text-2xl font-sans text-cyan-600'>voidScreams</h1>
-      <PostForm/>
+    <div className=" flex flex-col items-center gap-4">
+      <PostForm onSubmit={addNewPost}/>
       <PostFeed postList={postList}/>
     </div></>
   );

@@ -1,7 +1,10 @@
 import React  from 'react'
 import { Post } from '../postInterfaces';
 import { useState } from 'react';
-const PostForm = () => {
+interface PostFormProps {
+    onSubmit: (newPost: Post) => void;
+}
+const PostForm = (props:PostFormProps) => {
 
     const [newPost, setNewPost] = useState<Post>({
         "name": "",
@@ -15,9 +18,11 @@ const PostForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        props.onSubmit(newPost)
+        setNewPost({"name": "", "body":""})
     }
     return ( 
-        <form className='flex flex-col' onSubmit={handleSubmit}>
+        <form className='flex flex-col border rounded-lg p-4 bg-teal-100' onSubmit={handleSubmit}>
                 <label htmlFor="name">Name: </label>
     <input className='border p-2 rounded-lg drop-shadow-lg' id="name" type="text" name="name" value={newPost.name} onChange={handleChange}/>
     <label htmlFor="body">Thoughts: </label>
