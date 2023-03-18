@@ -11,7 +11,7 @@ const PostForm = (props:PostFormProps) => {
         "body": ""
     })
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value} = e.target
         setNewPost((oldPost) => ({...oldPost, [name]: value}))
     }
@@ -28,12 +28,12 @@ const PostForm = (props:PostFormProps) => {
         
     }
     return ( 
-        <form className='flex flex-col w-2/3 border rounded-lg p-6 bg-teal-100 gap-2 drop-shadow-xl' onSubmit={handleSubmit}>
-                <label htmlFor="name" className=' text-lg'>Name: </label>
+        <form className='flex flex-col w-1/2 border rounded-lg p-8 bg-teal-100 gap-2 drop-shadow-xl' onSubmit={handleSubmit}>
+                <label htmlFor="name" className=' text-lg font-semibold text-teal-800'>Name: </label>
     <input className='border p-2 rounded-lg drop-shadow-lg' id="name" type="text" name="name" value={newPost.name} onChange={handleChange}/>
-    <label htmlFor="body" className=' text-lg'>Thoughts: </label>
-    <input className='border p-2 rounded-lg drop-shadow-lg' id="body" type="text" name="body" value={newPost.body} onChange={handleChange}/>
-        <button className='border p-2 rounded-lg drop-shadow-lg bg-teal-700 text-white' type="submit">Create Post</button>
+    <label htmlFor="body" className=' text-lg font-semibold text-teal-800'>Thoughts: </label>
+    <textarea className='border p-2 rounded-lg drop-shadow-lg' id="body" name="body" value={newPost.body} onChange={handleChange}/>
+        <button className='border p-3 mt-4 rounded-xl drop-shadow-xl  bg-teal-700 font-semibold m-auto mr-0 text-white flex transition-all duration-100 hover:scale-105' type="submit">Create Post</button>
         </form>
      );
 }

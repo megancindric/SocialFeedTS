@@ -10,13 +10,13 @@ function App() {
   ])
 
   const addNewPost = (newPost:Post) => {
-    let newPosts:Post[] = [newPost,...postList]
+    let newPosts:Post[] = [...postList, newPost]
     setPostList(newPosts)
   }
   return (
     <div className=' bg-orange-50 min-h-screen'>
     <Header/>
-    <div className=" flex flex-col items-center gap-4">
+    <div className=" flex flex-col items-center gap-10">
       <PostForm onSubmit={addNewPost}/>
       <PostFeed postList={postList}/>
     </div></div>
