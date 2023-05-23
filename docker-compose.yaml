@@ -1,0 +1,8 @@
+version: '3.1'
+services:
+  frontend:
+    # build: .
+    image: megancindric/socialfeedts:latest
+    ports:
+      - 80:80
+    restart: always

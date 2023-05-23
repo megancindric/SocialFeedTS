@@ -1,12 +1,13 @@
 # Build
 FROM node:alpine as builder
 
-WORKDIR ./home/socialfeed
+WORKDIR /app
 
-COPY . .
+COPY package*.json .
 
-RUN npm install
-
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+COPY . ./
 RUN npm run build
 
 # NGINX
@@ -16,8 +17,8 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 # Copy from build stage
-COPY --from=builder /home/socialfeed/build .
+COPY --from=builder /app/build .
 
-EXPOSE 3000 80
+EXPOSE 80
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
